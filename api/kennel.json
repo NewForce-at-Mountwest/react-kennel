@@ -46,5 +46,11 @@
   "locations": [
     { "id": 1, "name": "Nashville North", "address": "500 Circle Way" },
     { "id": 2, "name": "Nashville South", "address": "10101 Binary Court" }
+  ],
+  "animalOwners": [
+    { "id": 1, "animalId": 1, "ownerId": 2 },
+    { "id": 2, "animalId": 2, "ownerId": 2 },
+    { "id": 3, "animalId": 3, "ownerId": 1 },
+    { "id": 4, "animalId": 3, "ownerId": 6 }
   ]
 }
