@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class OwnerList extends Component {
+export default class OwnerList extends Component {
   render() {
     return (
       <article>
@@ -14,4 +14,4 @@ class OwnerList extends Component {
   }
 }
 
-export default OwnerList;
+
