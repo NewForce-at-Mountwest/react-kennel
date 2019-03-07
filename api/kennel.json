@@ -5,13 +5,19 @@
     { "id": 3, "name": "Zoe LeBlanc" },
     { "id": 4, "name": "Blaise Roberts" }
   ],
+  "species": [
+    { "id": 1, "name": "dog", "icon": "https://cdn2.iconfinder.com/data/icons/dog-2/32/husky-512.png"},
+    { "id": 2, "name": "cat", "icon": "https://cdn1.iconfinder.com/data/icons/cute-kitty-emoticon/595/CUTE_KITTY_EMOTICON-06-512.png" },
+    { "id": 3, "name": "lizard", "icon": "https://cdn3.iconfinder.com/data/icons/cute-animals-10/50/23-512.png" },
+    { "id": 4, "name": "bird", "icon": "https://cdn4.vectorstock.com/i/1000x1000/20/43/cute-bird-isolated-icon-vector-19552043.jpg" }
+  ],
   "animals": [
-    { "id": 1, "name": "Doodles" },
-    { "id": 2, "name": "Jack" },
-    { "id": 3, "name": "Angus" },
-    { "id": 4, "name": "Henley" },
-    { "id": 5, "name": "Derkins" },
-    { "id": 6, "name": "Checkers" }
+    { "id": 1, "name": "Doodles", "speciesId": 1 },
+    { "id": 2, "name": "Jack", "speciesId": 2 },
+    { "id": 3, "name": "Angus", "speciesId": 1 },
+    { "id": 4, "name": "Henley", "speciesId": 4 },
+    { "id": 5, "name": "Derkins", "speciesId": 3 },
+    { "id": 6, "name": "Checkers", "speciesId": 2 }
   ],
   "owners": [
     {

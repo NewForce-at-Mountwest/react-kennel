@@ -29,7 +29,7 @@ class ApplicationViews extends Component {
     }).then(owners => owners.json())
     .then(parsedOwners => {
       newState.owners = parsedOwners;
-      return fetch("http://localhost:5002/animals")
+      return fetch("http://localhost:5002/animals?_expand=species")
     }).then(animals => animals.json())
     .then(parsedAnimals => {
       newState.animals = parsedAnimals;
