@@ -12,7 +12,8 @@ class ApplicationViews extends Component {
     employees: [],
     locations: [],
     animals: [],
-    owners: []
+    owners: [],
+    species: []
   };
 
   deleteAnimal = id => {
@@ -46,6 +47,10 @@ class ApplicationViews extends Component {
     }).then(animals => animals.json())
     .then(parsedAnimals => {
       newState.animals = parsedAnimals;
+      return fetch("http://localhost:5002/species")
+    }).then(species => species.json())
+    .then(parsedSpecies => {
+      newState.species = parsedSpecies;
       this.setState(newState);
     })
   }
@@ -67,7 +72,7 @@ class ApplicationViews extends Component {
         <Route
           path="/animals"
           render={props => {
-            return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />;
+            return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} species={this.state.species}/>;
           }}
         />
         <Route
