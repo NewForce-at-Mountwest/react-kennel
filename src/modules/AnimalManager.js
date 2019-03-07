@@ -4,9 +4,11 @@ export default {
       animals.json()
     );
   },
-//   deleteAnimal: () => {
-
-//   }
+  deleteAnimal: id => {
+    return fetch(`http://localhost:5002/animals/${id}`, {
+      method: "DELETE"
+    })
+      .then(() => fetch(`http://localhost:5002/animals`))
+      .then(e => e.json());
+  }
 };
-
-
