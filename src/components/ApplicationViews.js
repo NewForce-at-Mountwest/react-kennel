@@ -15,6 +15,19 @@ class ApplicationViews extends Component {
     owners: []
   };
 
+  deleteAnimal = id => {
+    return fetch(`http://localhost:5002/animals/${id}`, {
+        method: "DELETE"
+    })
+    .then(e => e.json())
+    .then(() => fetch(`http://localhost:5002/animals`))
+    .then(e => e.json())
+    .then(animals => this.setState({
+        animals: animals
+    })
+  )
+}
+
   componentDidMount(){
     const newState = {};
     fetch("http://localhost:5002/employees")
@@ -42,7 +55,6 @@ class ApplicationViews extends Component {
 
 
   render() {
-    console.log("it's renderiiiiing!");
     return (
       <div className="container-div">
         <Route
@@ -55,7 +67,7 @@ class ApplicationViews extends Component {
         <Route
           path="/animals"
           render={props => {
-            return <AnimalList animals={this.state.animals} />;
+            return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />;
           }}
         />
         <Route
