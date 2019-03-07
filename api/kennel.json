@@ -1,9 +1,21 @@
 {
   "employees": [
-    { "id": 1, "name": "Jessica Younker" },
-    { "id": 2, "name": "Jordan Nelson" },
-    { "id": 3, "name": "Zoe LeBlanc" },
-    { "id": 4, "name": "Blaise Roberts" }
+    {
+      "id": 1,
+      "name": "Jessica Younker"
+    },
+    {
+      "id": 2,
+      "name": "Jordan Nelson"
+    },
+    {
+      "id": 3,
+      "name": "Zoe LeBlanc"
+    },
+    {
+      "id": 4,
+      "name": "Blaise Roberts"
+    }
   ],
   "species": [
     { "id": 1, "name": "dog", "icon": "https://cdn2.iconfinder.com/data/icons/dog-2/32/husky-512.png"},
@@ -50,7 +62,15 @@
     }
   ],
   "locations": [
-    { "id": 1, "name": "Nashville North", "address": "500 Circle Way" },
-    { "id": 2, "name": "Nashville South", "address": "10101 Binary Court" }
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "500 Circle Way"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "10101 Binary Court"
+    }
   ]
 }
