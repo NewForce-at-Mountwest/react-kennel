@@ -83,13 +83,13 @@ class ApplicationViews extends Component {
         <Route
           path="/employees"
           render={props => {
-            return <EmployeeList employees={this.state.employees} />;
+            return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />;
           }}
         />
         <Route
           path="/owners"
           render={props => {
-            return <OwnerList owners={this.state.owners} />;
+            return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />;
           }}
         />
       </div>

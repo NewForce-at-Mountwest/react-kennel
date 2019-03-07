@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import dog from "./DogIcon.png";
 import "./Animal.css";
 
 export default class AnimalList extends Component {
@@ -42,6 +41,7 @@ export default class AnimalList extends Component {
                   />
                   <p>{animal.name}</p>
                   <p>{animal.species.name}</p>
+                  <p>Owner: {animal.owner.name}</p>
 
                   <button
                     className="btn btn-danger"
