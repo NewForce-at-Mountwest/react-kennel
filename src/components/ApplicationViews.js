@@ -4,6 +4,7 @@ import AnimalList from "./animal/AnimalList";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
+import AnimalAPIManager from "../modules/AnimalManager"
 
 class ApplicationViews extends Component {
 
@@ -42,8 +43,9 @@ class ApplicationViews extends Component {
     }).then(owners => owners.json())
     .then(parsedOwners => {
       newState.owners = parsedOwners;
-      return fetch("http://localhost:5002/animals")
-    }).then(animals => animals.json())
+      // fetching from the api manager
+      return AnimalAPIManager.getAll();
+    })
     .then(parsedAnimals => {
       newState.animals = parsedAnimals;
       this.setState(newState);
