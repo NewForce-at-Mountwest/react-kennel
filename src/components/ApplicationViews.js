@@ -8,6 +8,7 @@ import AnimalAPIManager from "../modules/AnimalManager";
 import EmployeeAPIManager from "../modules/EmployeeManager";
 import OwnerAPIManager from "../modules/OwnerManager";
 import LocationAPIManager from "../modules/LocationManager";
+import SpeciesAPIManager from "../modules/SpeciesManager";
 
 class ApplicationViews extends Component {
   state = {
@@ -52,6 +53,8 @@ class ApplicationViews extends Component {
       .then(employees => (newState.employees = employees))
       .then(LocationAPIManager.getAll)
       .then(locations => (newState.locations = locations))
+      .then(SpeciesAPIManager.getAll)
+      .then(species => newState.species = species)
       .then(() => this.setState(newState));
   }
 

@@ -3,26 +3,35 @@ import dog from "./DogIcon.png";
 import "./Animal.css";
 
 export default class AnimalList extends Component {
-
-  state={
+  state = {
     animalsToRender: []
-  }
+  };
 
-  filterAnimals(evt){
-    console.log(evt.target.value)
-  }
+  filterAnimals = evt => {
+    const matchingAnimals = this.props.animals.filter(
+      animal => animal.speciesId == evt.target.value
+    );
+    this.setState({ animalsToRender: matchingAnimals });
+  };
+
+
+
+
   render() {
+    const animalsToRender = this.state.animalsToRender.length > 0 ? this.state.animalsToRender : this.props.animals;
     return (
       <section>
-        <select onChange={this.filterAnimals} >
+        <select onClick={this.filterAnimals}>
           {this.props.species.map(singleSpecies => {
             return (
-              <option key={singleSpecies.id}  value={singleSpecies.id}>View all {singleSpecies.name}s</option>
+              <option key={singleSpecies.id} value={singleSpecies.id}>
+                View all {singleSpecies.name}s
+              </option>
             );
           })}
         </select>
         <section className="animals">
-          {this.props.animals.map(animal => (
+          {animalsToRender.map(animal => (
             <div key={animal.id} className="card">
               <div className="card-body">
                 <h5 className="card-title">

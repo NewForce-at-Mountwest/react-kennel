@@ -1,6 +1,6 @@
 export default {
   getAll: () => {
-    return fetch("http://localhost:5002/animals").then(animals =>
+    return fetch("http://localhost:5002/animals?_expand=species").then(animals =>
       animals.json()
     );
   },
