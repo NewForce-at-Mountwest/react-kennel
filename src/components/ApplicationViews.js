@@ -4,10 +4,12 @@ import AnimalList from "./animal/AnimalList";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
+import AnimalAPIManager from "../modules/AnimalManager";
+import EmployeeAPIManager from "../modules/EmployeeManager";
+import OwnerAPIManager from "../modules/OwnerManager";
+import LocationAPIManager from "../modules/LocationManager";
 
 class ApplicationViews extends Component {
-
-
   state = {
     employees: [],
     locations: [],
@@ -17,47 +19,41 @@ class ApplicationViews extends Component {
   };
 
   deleteAnimal = id => {
-    return fetch(`http://localhost:5002/animals/${id}`, {
-        method: "DELETE"
-    })
-    .then(e => e.json())
-    .then(() => fetch(`http://localhost:5002/animals`))
-    .then(e => e.json())
-    .then(animals => this.setState({
+    AnimalAPIManager.deleteAnimal(id).then(animals =>
+      this.setState({
         animals: animals
-    })
-  )
-}
+      })
+    );
+  };
 
-  componentDidMount(){
+  deleteEmployee = id => {
+    EmployeeAPIManager.deleteEmployee(id).then(employees =>
+      this.setState({
+        employees: employees
+      })
+    );
+  };
+
+  deleteOwner = id => {
+    OwnerAPIManager.deleteOwner(id).then(owners =>
+      this.setState({
+        owners: owners
+      })
+    );
+  };
+
+  componentDidMount() {
     const newState = {};
-    fetch("http://localhost:5002/employees")
-    .then(employees => employees.json())
-    .then(parsedEmployees => {
-      newState.employees = parsedEmployees;
-      return fetch("http://localhost:5002/locations")
-    }).then(locations => locations.json())
-    .then(parsedLocations => {
-      newState.locations = parsedLocations;
-      return fetch("http://localhost:5002/owners")
-    }).then(owners => owners.json())
-    .then(parsedOwners => {
-      newState.owners = parsedOwners;
-      return fetch("http://localhost:5002/animals?_expand=species")
-    }).then(animals => animals.json())
-    .then(parsedAnimals => {
-      newState.animals = parsedAnimals;
-      return fetch("http://localhost:5002/species")
-    }).then(species => species.json())
-    .then(parsedSpecies => {
-      newState.species = parsedSpecies;
-      this.setState(newState);
-    })
+    AnimalAPIManager.getAll()
+      .then(animals => (newState.animals = animals))
+      .then(OwnerAPIManager.getAll)
+      .then(owners => (newState.owners = owners))
+      .then(EmployeeAPIManager.getAll)
+      .then(employees => (newState.employees = employees))
+      .then(LocationAPIManager.getAll)
+      .then(locations => (newState.locations = locations))
+      .then(() => this.setState(newState));
   }
-
-
-
-
 
   render() {
     return (
@@ -72,7 +68,13 @@ class ApplicationViews extends Component {
         <Route
           path="/animals"
           render={props => {
-            return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} species={this.state.species}/>;
+            return (
+              <AnimalList
+                deleteAnimal={this.deleteAnimal}
+                animals={this.state.animals}
+                species={this.state.species}
+              />
+            );
           }}
         />
         <Route
@@ -81,7 +83,7 @@ class ApplicationViews extends Component {
             return <EmployeeList employees={this.state.employees} />;
           }}
         />
-          <Route
+        <Route
           path="/owners"
           render={props => {
             return <OwnerList owners={this.state.owners} />;
