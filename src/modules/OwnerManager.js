@@ -1,14 +1,14 @@
 export default {
     getAll: () => {
-      return fetch("http://localhost:5002/employees").then(employees =>
-        employees.json()
+      return fetch("http://localhost:5002/owners").then(owners =>
+        owners.json()
       );
     },
     deleteEmployee: id => {
-      return fetch(`http://localhost:5002/employees/${id}`, {
+      return fetch(`http://localhost:5002/owners/${id}`, {
         method: "DELETE"
       })
-        .then(() => fetch(`http://localhost:5002/employees`))
+        .then(() => fetch(`http://localhost:5002/owners`))
         .then(e => e.json());
     }
   };

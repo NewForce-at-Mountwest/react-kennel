@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import AnimalList from "./animal/AnimalList";
+import AnimalDetail from "./animal/AnimalDetail"
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
@@ -18,7 +19,7 @@ class ApplicationViews extends Component {
   };
 
   deleteAnimal = id => {
-    AnimalAPIManager.deleteAnimal(id).then(animals =>
+    return AnimalAPIManager.deleteAnimal(id).then(animals =>
       this.setState({
         animals: animals
       })
@@ -26,7 +27,7 @@ class ApplicationViews extends Component {
   };
 
   deleteEmployee = id => {
-    EmployeeAPIManager.deleteEmployee(id).then(employees =>
+    return EmployeeAPIManager.deleteEmployee(id).then(employees =>
       this.setState({
         employees: employees
       })
@@ -34,24 +35,24 @@ class ApplicationViews extends Component {
   };
 
   deleteOwner = id => {
-    OwnerAPIManager.deleteOwner(id)
-    .then(owners => this.setState({
+    return OwnerAPIManager.deleteOwner(id).then(owners =>
+      this.setState({
         owners: owners
-    })
-  )
-}
+      })
+    );
+  };
 
   componentDidMount() {
     const newState = {};
     AnimalAPIManager.getAll()
-    .then(animals => newState.animals = animals)
-    .then(OwnerAPIManager.getAll)
-    .then(owners => newState.owners = owners)
-    .then(EmployeeAPIManager.getAll)
-    .then(employees => newState.employees = employees)
-    .then(LocationAPIManager.getAll)
-    .then(locations => newState.locations = locations)
-    .then(() => this.setState(newState))
+      .then(animals => (newState.animals = animals))
+      .then(OwnerAPIManager.getAll)
+      .then(owners => (newState.owners = owners))
+      .then(EmployeeAPIManager.getAll)
+      .then(employees => (newState.employees = employees))
+      .then(LocationAPIManager.getAll)
+      .then(locations => (newState.locations = locations))
+      .then(() => this.setState(newState));
   }
 
   render() {
@@ -65,10 +66,18 @@ class ApplicationViews extends Component {
           }}
         />
         <Route
+          exact
           path="/animals"
           render={props => {
+            return <AnimalList animals={this.state.animals} />;
+          }}
+        />
+        <Route
+          path="/animals/:animalId(\d+)"
+          render={props => {
             return (
-              <AnimalList
+              <AnimalDetail
+                {...props}
                 deleteAnimal={this.deleteAnimal}
                 animals={this.state.animals}
               />
