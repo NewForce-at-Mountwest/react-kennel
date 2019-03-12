@@ -1,7 +1,8 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import AnimalList from "./animal/AnimalList";
-import AnimalDetail from "./animal/AnimalDetail"
+import AnimalDetail from "./animal/AnimalDetail";
+import AnimalForm from "./animal/AnimalForm";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
@@ -25,6 +26,15 @@ class ApplicationViews extends Component {
       })
     );
   };
+
+  addAnimal = animalObject =>
+  AnimalAPIManager.postAnimal(animalObject)
+    .then(() => AnimalAPIManager.getAll())
+    .then(animals =>
+      this.setState({
+        animals: animals
+      })
+    );
 
   deleteEmployee = id => {
     return EmployeeAPIManager.deleteEmployee(id).then(employees =>
@@ -69,7 +79,24 @@ class ApplicationViews extends Component {
           exact
           path="/animals"
           render={props => {
-            return <AnimalList animals={this.state.animals} />;
+            return (
+              <AnimalList
+                {...props}
+                animals={this.state.animals}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/animals/new"
+          render={props => {
+            return (
+              <AnimalForm
+                {...props}
+                addAnimal={this.addAnimal}
+                employees={this.state.employees}
+              />
+            );
           }}
         />
         <Route

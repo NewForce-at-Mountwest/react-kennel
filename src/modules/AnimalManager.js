@@ -1,3 +1,4 @@
+const remoteURL = "http://localhost:5002"
 export default {
   getAll: () => {
     return fetch("http://localhost:5002/animals").then(animals =>
@@ -10,5 +11,14 @@ export default {
     })
       .then(() => fetch(`http://localhost:5002/animals`))
       .then(e => e.json());
+  },
+  postAnimal(newAnimal) {
+    return fetch(`${remoteURL}/animals`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newAnimal)
+    }).then(data => data.json())
   }
 };
