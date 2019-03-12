@@ -28,29 +28,13 @@ class ApplicationViews extends Component {
   };
 
   addAnimal = animalObject =>
-  AnimalAPIManager.postAnimal(animalObject)
-    .then(() => AnimalAPIManager.getAll())
-    .then(animals =>
-      this.setState({
-        animals: animals
-      })
-    );
-
-  deleteEmployee = id => {
-    return EmployeeAPIManager.deleteEmployee(id).then(employees =>
-      this.setState({
-        employees: employees
-      })
-    );
-  };
-
-  deleteOwner = id => {
-    return OwnerAPIManager.deleteOwner(id).then(owners =>
-      this.setState({
-        owners: owners
-      })
-    );
-  };
+    AnimalAPIManager.postAnimal(animalObject)
+      .then(() => AnimalAPIManager.getAll())
+      .then(animals =>
+        this.setState({
+          animals: animals
+        })
+      );
 
   componentDidMount() {
     const newState = {};
@@ -79,12 +63,7 @@ class ApplicationViews extends Component {
           exact
           path="/animals"
           render={props => {
-            return (
-              <AnimalList
-                {...props}
-                animals={this.state.animals}
-              />
-            );
+            return <AnimalList {...props} animals={this.state.animals} />;
           }}
         />
         <Route
