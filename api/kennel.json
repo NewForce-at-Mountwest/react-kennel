@@ -2,19 +2,69 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker"
+      "name": "Jessica Younker",
+      "email": "y@y.com",
+      "password": "y"
     },
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Jordan Nelson",
+      "email": "n@n.com",
+      "password": "n"
     },
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "email": "l@l.com",
+      "password": "l"
     },
     {
       "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Blaise Roberts",
+      "email": "r@r.com",
+      "password": "r"
+    },
+    {
+      "name": "Jerry",
+      "email": "jz@jz.com",
+      "password": "jz",
+      "id": 5
+    },
+    {
+      "name": "Henry",
+      "email": "henry@henry.com",
+      "password": "henry",
+      "id": 6
+    },
+    {
+      "name": "Jenny",
+      "email": "jenny@j.com",
+      "password": "jenny",
+      "id": 7
+    },
+    {
+      "name": "Booger",
+      "email": "boogers@boogers.com",
+      "password": "b",
+      "id": 8
+    },
+    {
+      "name": "boogers",
+      "email": "boogers2@boogers.com",
+      "password": "b",
+      "id": 9
+    },
+    {
+      "name": "john",
+      "email": "john@j.com",
+      "password": "john",
+      "id": 10
+    },
+    {
+      "name": "BOOOOBBBBBB",
+      "email": "BOB@BOB.COM",
+      "password": "BOB",
+      "id": 11
     }
   ],
   "animals": [

@@ -5,6 +5,7 @@ import AnimalDetail from "./animal/AnimalDetail";
 import AnimalForm from "./animal/AnimalForm";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
+import EmployeeForm from "./employee/EmployeeForm";
 import OwnerList from "./owner/OwnerList";
 import AnimalAPIManager from "../modules/AnimalManager";
 import EmployeeAPIManager from "../modules/EmployeeManager";
@@ -20,7 +21,8 @@ class ApplicationViews extends Component {
     owners: []
   };
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  // This method checks to see if there's anything in either local or session storage. If either one of them don't return null (i.e. if there's user info in either place), it will return true. 
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null || localStorage.getItem("credentials") !== null;
 
   deleteAnimal = id => {
     return AnimalAPIManager.deleteAnimal(id).then(animals =>
@@ -39,6 +41,14 @@ class ApplicationViews extends Component {
         })
       );
 
+  registerEmployee = employeeObject =>
+    EmployeeAPIManager.postEmployee(employeeObject);
+
+  refreshEmployees = () =>
+    EmployeeAPIManager.getAll().then(parsedEmps => {
+      this.setState({ employees: parsedEmps });
+    });
+
   componentDidMount() {
     const newState = {};
     AnimalAPIManager.getAll()
@@ -55,7 +65,12 @@ class ApplicationViews extends Component {
   render() {
     return (
       <div className="container-div">
-        <Route path="/login" component={Login} />
+        <Route
+          path="/login"
+          render={props => {
+            return <Login {...props} />;
+          }}
+        />
         <Route
           exact
           path="/"
@@ -117,11 +132,23 @@ class ApplicationViews extends Component {
           }}
         />
         <Route
+          path="/register"
+          render={props => {
+            return (
+              <EmployeeForm
+                {...props}
+                registerEmployee={this.registerEmployee}
+                refreshEmployees={this.refreshEmployees}
+              />
+            );
+          }}
+        />
+        <Route
           path="/owners"
           render={props => {
             return this.isAuthenticated() ? (
               <OwnerList owners={this.state.owners} />
-            ) :  (
+            ) : (
               <Redirect to="/login" />
             );
           }}
