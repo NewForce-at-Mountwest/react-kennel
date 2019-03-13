@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import AnimalList from "./animal/AnimalList";
 import AnimalDetail from "./animal/AnimalDetail";
@@ -10,6 +10,7 @@ import AnimalAPIManager from "../modules/AnimalManager";
 import EmployeeAPIManager from "../modules/EmployeeManager";
 import OwnerAPIManager from "../modules/OwnerManager";
 import LocationAPIManager from "../modules/LocationManager";
+import Login from "./authentication/Login";
 
 class ApplicationViews extends Component {
   state = {
@@ -18,6 +19,17 @@ class ApplicationViews extends Component {
     animals: [],
     owners: []
   };
+
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
+  // isAuthenticated(){
+  //   const credentials = sessionStorage.getItem("credentials");
+  //   if(credentials === null){
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   deleteAnimal = id => {
     return AnimalAPIManager.deleteAnimal(id).then(animals =>
@@ -52,6 +64,7 @@ class ApplicationViews extends Component {
   render() {
     return (
       <div className="container-div">
+        <Route path="/login" component={Login} />
         <Route
           exact
           path="/"
@@ -63,7 +76,12 @@ class ApplicationViews extends Component {
           exact
           path="/animals"
           render={props => {
-            return <AnimalList {...props} animals={this.state.animals} />;
+            if(this.isAuthenticated()){
+              return <AnimalList {...props} animals={this.state.animals} />;
+            } else {
+              return <Redirect to="/login" />
+            }
+
           }}
         />
         <Route
