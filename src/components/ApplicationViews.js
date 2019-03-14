@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import AnimalList from "./animal/AnimalList";
 import AnimalDetail from "./animal/AnimalDetail";
 import AnimalForm from "./animal/AnimalForm";
+import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
@@ -20,7 +21,7 @@ class ApplicationViews extends Component {
     owners: []
   };
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   // isAuthenticated(){
   //   const credentials = sessionStorage.getItem("credentials");
@@ -47,6 +48,16 @@ class ApplicationViews extends Component {
           animals: animals
         })
       );
+
+  updateAnimal = editedAnimalObject => {
+    return AnimalAPIManager.put(editedAnimalObject)
+      .then(() => AnimalAPIManager.getAll())
+      .then(animals => {
+        this.setState({
+          animals: animals
+        });
+      });
+  };
 
   componentDidMount() {
     const newState = {};
@@ -76,12 +87,11 @@ class ApplicationViews extends Component {
           exact
           path="/animals"
           render={props => {
-            if(this.isAuthenticated()){
+            if (this.isAuthenticated()) {
               return <AnimalList {...props} animals={this.state.animals} />;
             } else {
-              return <Redirect to="/login" />
+              return <Redirect to="/login" />;
             }
-
           }}
         />
         <Route
@@ -97,6 +107,7 @@ class ApplicationViews extends Component {
           }}
         />
         <Route
+          exact
           path="/animals/:animalId(\d+)"
           render={props => {
             return (
@@ -104,6 +115,18 @@ class ApplicationViews extends Component {
                 {...props}
                 deleteAnimal={this.deleteAnimal}
                 animals={this.state.animals}
+              />
+            );
+          }}
+        />
+        <Route
+          path="/animals/:animalId(\d+)/edit"
+          render={props => {
+            return (
+              <AnimalEditForm
+                {...props}
+                employees={this.state.employees}
+                updateAnimal={this.updateAnimal}
               />
             );
           }}
