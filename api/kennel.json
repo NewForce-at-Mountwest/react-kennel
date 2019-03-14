@@ -19,22 +19,40 @@
   ],
   "animals": [
     {
-      "id": 9,
-      "name": "Bart",
-      "breed": "Golden Retriever",
-      "employeeId": 4
-    },
-    {
-      "id": 10,
-      "name": "Noodles the Boodles",
-      "breed": "Poodle",
-      "employeeId": 3
-    },
-    {
       "name": "John",
       "breed": "Pug",
       "employeeId": 1,
       "id": 11
+    },
+    {
+      "name": "Frank",
+      "breed": "Hound",
+      "employeeId": 1,
+      "id": 12
+    },
+    {
+      "name": "Hank",
+      "breed": "Husky",
+      "employeeId": 2,
+      "id": 13
+    },
+    {
+      "name": "Spank",
+      "breed": "Collie",
+      "employeeId": 3,
+      "id": 14
+    },
+    {
+      "id": 15,
+      "name": "Jerome!!!",
+      "breed": "Bulldog",
+      "employeeId": 3
+    },
+    {
+      "name": "Henry",
+      "breed": "Lhasa Apso",
+      "employeeId": 4,
+      "id": 16
     }
   ],
   "owners": [
