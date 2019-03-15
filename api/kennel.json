@@ -53,36 +53,22 @@
       "breed": "Lhasa Apso",
       "employeeId": 4,
       "id": 16
+    },
+    {
+      "name": "Laurie",
+      "breed": "Hyena",
+      "employeeId": 3,
+      "id": 17
     }
   ],
   "owners": [
     {
-      "id": 1,
-      "name": "Ryan"
+      "id": 8,
+      "name": "Mindy"
     },
     {
-      "id": 2,
-      "name": "Dale"
-    },
-    {
-      "id": 3,
-      "name": "Russ"
-    },
-    {
-      "id": 4,
-      "name": "Sydney"
-    },
-    {
-      "id": 5,
-      "name": "Megan"
-    },
-    {
-      "id": 6,
-      "name": "Michelle"
-    },
-    {
-      "id": 7,
-      "name": "Josh"
+      "id": 9,
+      "name": "Hannah"
     }
   ],
   "locations": [

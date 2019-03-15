@@ -4,11 +4,12 @@ export default {
         owners.json()
       );
     },
-    deleteEmployee: id => {
+    getOne: (id) => {
+      return fetch(`http://localhost:5002/owners/${id}`).then(owner => owner.json())
+    },
+    deleteOwner: id => {
       return fetch(`http://localhost:5002/owners/${id}`, {
         method: "DELETE"
       })
-        .then(() => fetch(`http://localhost:5002/owners`))
-        .then(e => e.json());
     }
   };

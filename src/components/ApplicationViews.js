@@ -7,9 +7,9 @@ import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationList from "./location/LocationList";
 import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
+import OwnerDetail from "./owner/OwnerDetail";
 import AnimalAPIManager from "../modules/AnimalManager";
 import EmployeeAPIManager from "../modules/EmployeeManager";
-import OwnerAPIManager from "../modules/OwnerManager";
 import LocationAPIManager from "../modules/LocationManager";
 import Login from "./authentication/Login";
 
@@ -17,20 +17,10 @@ class ApplicationViews extends Component {
   state = {
     employees: [],
     locations: [],
-    animals: [],
-    owners: []
+    animals: []
   };
 
   isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
-
-  // isAuthenticated(){
-  //   const credentials = sessionStorage.getItem("credentials");
-  //   if(credentials === null){
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   deleteAnimal = id => {
     return AnimalAPIManager.deleteAnimal(id).then(animals =>
@@ -63,8 +53,6 @@ class ApplicationViews extends Component {
     const newState = {};
     AnimalAPIManager.getAll()
       .then(animals => (newState.animals = animals))
-      .then(OwnerAPIManager.getAll)
-      .then(owners => (newState.owners = owners))
       .then(EmployeeAPIManager.getAll)
       .then(employees => (newState.employees = employees))
       .then(LocationAPIManager.getAll)
@@ -134,13 +122,25 @@ class ApplicationViews extends Component {
         <Route
           path="/employees"
           render={props => {
-            return <EmployeeList employees={this.state.employees} animals={this.state.animals} />;
+            return (
+              <EmployeeList
+                employees={this.state.employees}
+                animals={this.state.animals}
+              />
+            );
           }}
         />
         <Route
+          exact
           path="/owners"
           render={props => {
-            return <OwnerList owners={this.state.owners} />;
+            return <OwnerList />;
+          }}
+        />
+        <Route
+          path="/owners/:ownerId"
+          render={props => {
+            return <OwnerDetail {...props} />;
           }}
         />
       </div>
