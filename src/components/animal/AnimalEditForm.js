@@ -6,7 +6,8 @@ export default class AnimalEditForm extends Component {
   state = {
     animalName: "",
     breed: "",
-    employeeId: ""
+    employeeId: "",
+    image: ""
   };
 
   handleFieldChange = evt => {
@@ -25,6 +26,7 @@ export default class AnimalEditForm extends Component {
         id: this.props.match.params.animalId,
         name: this.state.animalName,
         breed: this.state.breed,
+        image: this.state.image,
         employeeId: parseInt(this.state.employeeId)
       };
 
@@ -39,7 +41,8 @@ export default class AnimalEditForm extends Component {
       this.setState({
         animalName: animal.name,
         breed: animal.breed,
-        employeeId: animal.employeeId
+        employeeId: animal.employeeId,
+        image: animal.image
       });
     });
   }
@@ -68,6 +71,18 @@ export default class AnimalEditForm extends Component {
               onChange={this.handleFieldChange}
               id="breed"
               value={this.state.breed}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="image">Link to Image URL</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={this.handleFieldChange}
+              id="image"
+              value={this.state.image}
+              placeholder="Image URL"
             />
           </div>
           <div className="form-group">

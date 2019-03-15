@@ -21,6 +21,7 @@ export default class DetailCard extends Component {
             {Object.keys(singleResource).map(singleKey => {
               return (
                 <section key={singleKey}>
+                  {/* If the key is anything OTHER than a PK, an FK, or an image, go ahead and print it with the key and the value */}
                   {!singleKey.includes("id") &&
                   !singleKey.includes("Id") &&
                   !singleKey.includes("image") &&
@@ -33,6 +34,7 @@ export default class DetailCard extends Component {
                     ""
                   )}
 
+                  {/* If the loop gets to a non-empty  array (i.e. nested data from an _expand or _embed), loop through the array and print some more resource cards for the nested data) */}
                   {Array.isArray(singleResource[singleKey]) &&
                   singleResource[singleKey].length > 0 ? (
                     <section>
@@ -40,6 +42,7 @@ export default class DetailCard extends Component {
                       <div>
                         {singleResource[singleKey].map(childResource => (
                           <ResourceCard
+                            key={childResource.id}
                             resource={childResource}
                             route={singleKey}
                           />

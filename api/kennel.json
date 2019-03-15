@@ -23,18 +23,53 @@
   ],
   "animals": [
     {
-      "name": "Spank",
-      "breed": "Collie",
-      "employeeId": 3,
-      "id": 14,
-      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
-    },
-    {
       "name": "Jim",
       "breed": "Coon Hound",
       "image": "data:image/png;base64,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",
       "employeeId": 4,
       "id": 16
+    },
+    {
+      "name": "Hank",
+      "breed": "Doodle",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 1,
+      "id": 17
+    },
+    {
+      "name": "Indy",
+      "breed": "Husky",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 1,
+      "id": 18
+    },
+    {
+      "name": "Beatrice",
+      "breed": "Black Lab",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 2,
+      "id": 19
+    },
+    {
+      "name": "Thomas",
+      "breed": "Bulldog",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 3,
+      "id": 20
+    },
+    {
+      "name": "Parker",
+      "breed": "Mutt",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 4,
+      "id": 21
+    },
+    {
+      "name": "Spanky",
+      "breed": "Collie",
+      "image": "https://image.shutterstock.com/image-vector/dog-icon-260nw-551341387.jpg",
+      "employeeId": 1,
+      "id": 22
     }
   ],
   "owners": [
