@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./Animal.css";
 
-import AnimalCard from "./AnimalCard";
+import ResourceCard from "../generics/ResourceCard";
 
 export default class AnimalList extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class AnimalList extends Component {
         </div>
         <section className="animals">
           {this.props.animals.map(singleAnimal => (
-            <AnimalCard key={singleAnimal.id} animal={singleAnimal} />
+            <ResourceCard key={singleAnimal.id} resource={singleAnimal} route="animals" />
           ))}
         </section>
       </React.Fragment>

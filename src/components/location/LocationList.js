@@ -1,14 +1,12 @@
 import React, { Component } from "react";
+import ResourceCard from "../generics/ResourceCard"
 class LocationList extends Component {
   render() {
     return (
       <article>
         <h1>Locations</h1>
         {this.props.locations.map(location => {
-          return <div key={location.id}>
-          {location.name}
-          <p>{location.address}</p>
-          </div>
+          return <ResourceCard key={location.id} resource={location} route="locations" />
         })}
       </article>
     );

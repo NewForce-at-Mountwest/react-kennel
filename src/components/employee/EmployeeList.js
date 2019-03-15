@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AnimalCard from "../animal/AnimalCard";
+import ResourceCard from "../generics/ResourceCard";
 class EmployeeList extends Component {
   render() {
     return (
@@ -8,12 +9,12 @@ class EmployeeList extends Component {
         {this.props.employees.map(singleEmployee => {
           return (
             <div key={singleEmployee.id}>
-              <h4>{singleEmployee.name}</h4>
+              <ResourceCard resource={singleEmployee} route="employees" />
               <section>
                 {this.props.animals
                   .filter(animal => animal.employeeId === singleEmployee.id)
                   .map(matchingAnimal => {
-                    return <AnimalCard key={matchingAnimal.id} animal={matchingAnimal} />
+                    return <ResourceCard key={matchingAnimal.id} resource={matchingAnimal} route="animals" />
                 })}
               </section>
             </div>

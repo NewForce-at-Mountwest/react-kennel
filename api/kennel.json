@@ -2,19 +2,23 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker"
+      "name": "Jessica Younker",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Jordan Nelson",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Zoe LeBlanc",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Blaise Roberts",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     }
   ],
   "animals": [
@@ -22,79 +26,94 @@
       "name": "John",
       "breed": "Pug",
       "employeeId": 1,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png",
       "id": 11
     },
     {
       "name": "Frank",
       "breed": "Hound",
       "employeeId": 1,
-      "id": 12
+      "id": 12,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
     },
     {
       "name": "Hank",
       "breed": "Husky",
       "employeeId": 2,
-      "id": 13
+      "id": 13,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
     },
     {
       "name": "Spank",
       "breed": "Collie",
       "employeeId": 3,
-      "id": 14
+      "id": 14,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
     },
     {
       "id": 15,
       "name": "Jerome!!!",
       "breed": "Bulldog",
-      "employeeId": 3
+      "employeeId": 3,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
     },
     {
       "name": "Henry",
       "breed": "Lhasa Apso",
       "employeeId": 4,
-      "id": 16
+      "id": 16,
+      "image": "https://cdn1.iconfinder.com/data/icons/hand-drawn/100/handdrawn_pup-512.png"
     }
   ],
   "owners": [
     {
       "id": 1,
-      "name": "Ryan"
+      "name": "Ryan",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 2,
-      "name": "Dale"
+      "name": "Dale",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 3,
-      "name": "Russ"
+      "name": "Russ",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 4,
-      "name": "Sydney"
+      "name": "Sydney",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 5,
-      "name": "Megan"
+      "name": "Megan",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 6,
-      "name": "Michelle"
+      "name": "Michelle",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     },
     {
       "id": 7,
-      "name": "Josh"
+      "name": "Josh",
+      "image": "https://littlesmilespa.org/wp-content/uploads/2016/08/person-placeholder.png"
     }
   ],
   "locations": [
     {
       "id": 1,
       "name": "Nashville North",
-      "address": "500 Circle Way"
+      "address": "500 Circle Way",
+      "image" : "https://cdn1.iconfinder.com/data/icons/business-5/512/building_3-512.png"
     },
     {
       "id": 2,
       "name": "Nashville South",
-      "address": "10101 Binary Court"
+      "address": "10101 Binary Court",
+      "image" : "https://cdn1.iconfinder.com/data/icons/business-5/512/building_3-512.png"
     }
   ]
 }
