@@ -21,7 +21,7 @@ export default class AnimalList extends Component {
         </div>
         <section className="animals">
           {this.props.animals.map(singleAnimal => (
-            <ResourceCard key={singleAnimal.id} resource={singleAnimal} route="animals" />
+            <ResourceCard deleteResource={this.props.deleteAnimal} key={singleAnimal.id} resource={singleAnimal} route="animals" />
           ))}
         </section>
       </React.Fragment>

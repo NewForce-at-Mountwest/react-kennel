@@ -88,7 +88,7 @@ class ApplicationViews extends Component {
           path="/animals"
           render={props => {
             if (this.isAuthenticated()) {
-              return <AnimalList {...props} animals={this.state.animals} />;
+              return <AnimalList {...props} animals={this.state.animals} deleteAnimal={this.deleteAnimal} />;
             } else {
               return <Redirect to="/login" />;
             }
