@@ -1,6 +1,6 @@
 export default {
     getAll: () => {
-      return fetch("http://localhost:5002/employees").then(employees =>
+      return fetch("http://localhost:5002/employees?_embed=animals").then(employees =>
         employees.json()
       );
     },

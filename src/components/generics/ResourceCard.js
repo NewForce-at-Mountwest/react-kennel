@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./ResourceCard.css"
 
 const ResourceCard = props => {
   return (
@@ -14,12 +15,6 @@ const ResourceCard = props => {
           >
             Details
           </Link>
-          <button
-            className="btn btn-danger"
-            onClick={() => props.deleteResource(props.resource.id)}
-          >
-            Delete
-          </button>
         </h5>
       </div>
     </div>

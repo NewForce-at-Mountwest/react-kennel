@@ -6,7 +6,8 @@ export default class AnimalForm extends Component {
   state = {
     animalName: "",
     breed: "",
-    employeeId: ""
+    employeeId: "",
+    imageURL: ""
   };
 
   // Update state whenever an input field is edited
@@ -28,6 +29,7 @@ export default class AnimalForm extends Component {
       const animal = {
         name: this.state.animalName,
         breed: this.state.breed,
+        image: this.state.imageURL,
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
         employeeId: parseInt(this.state.employeeId)
       };
@@ -63,6 +65,17 @@ export default class AnimalForm extends Component {
               onChange={this.handleFieldChange}
               id="breed"
               placeholder="Breed"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageURL">Link to Image URL</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={this.handleFieldChange}
+              id="imageURL"
+              placeholder="Image URL"
             />
           </div>
           <div className="form-group">

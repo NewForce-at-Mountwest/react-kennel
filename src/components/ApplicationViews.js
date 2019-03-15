@@ -1,12 +1,11 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import AnimalList from "./animal/AnimalList";
+
 import AnimalDetail from "./animal/AnimalDetail";
 import AnimalForm from "./animal/AnimalForm";
 import AnimalEditForm from "./animal/AnimalEditForm";
-import LocationList from "./location/LocationList";
-import EmployeeList from "./employee/EmployeeList";
-import OwnerList from "./owner/OwnerList";
+import ResourceList from "./generics/ResourceList";
+import DetailCard from "./generics/DetailCard";
 import AnimalAPIManager from "../modules/AnimalManager";
 import EmployeeAPIManager from "../modules/EmployeeManager";
 import OwnerAPIManager from "../modules/OwnerManager";
@@ -80,7 +79,7 @@ class ApplicationViews extends Component {
           exact
           path="/"
           render={props => {
-            return <LocationList locations={this.state.locations} />;
+            return <ResourceList resources={this.state.locations} route="locations"/>;
           }}
         />
         <Route
@@ -88,7 +87,7 @@ class ApplicationViews extends Component {
           path="/animals"
           render={props => {
             if (this.isAuthenticated()) {
-              return <AnimalList {...props} animals={this.state.animals} deleteAnimal={this.deleteAnimal} />;
+              return <ResourceList {...props} resources={this.state.animals} route="animals"/>;
             } else {
               return <Redirect to="/login" />;
             }
@@ -108,13 +107,14 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/animals/:animalId(\d+)"
+          path="/animals/:resourceId(\d+)"
           render={props => {
             return (
-              <AnimalDetail
+              <DetailCard
                 {...props}
-                deleteAnimal={this.deleteAnimal}
-                animals={this.state.animals}
+                resources={this.state.animals}
+                deleteResource={this.deleteAnimal}
+                route="animals"
               />
             );
           }}
@@ -132,15 +132,31 @@ class ApplicationViews extends Component {
           }}
         />
         <Route
+        exact
           path="/employees"
           render={props => {
-            return <EmployeeList employees={this.state.employees} animals={this.state.animals} />;
+            return <ResourceList resources={this.state.employees}  route="employees" />;
           }}
         />
         <Route
+          exact
+          path="/employees/:resourceId(\d+)"
+          render={props => {
+            return (
+              <DetailCard
+                {...props}
+                resources={this.state.employees}
+                deleteResource={this.deleteEmployee}
+                route="employees"
+              />
+            );
+          }}
+        />
+
+        <Route
           path="/owners"
           render={props => {
-            return <OwnerList owners={this.state.owners} />;
+            return <ResourceList resources={this.state.owners} route="owners" />;
           }}
         />
       </div>
