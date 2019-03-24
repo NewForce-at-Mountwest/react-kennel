@@ -12,6 +12,7 @@ import EmployeeAPIManager from "../modules/EmployeeManager";
 import OwnerAPIManager from "../modules/OwnerManager";
 import LocationAPIManager from "../modules/LocationManager";
 import Login from "./authentication/Login";
+import Callback from "./Callback";
 
 class ApplicationViews extends Component {
   state = {
@@ -21,7 +22,7 @@ class ApplicationViews extends Component {
     owners: []
   };
 
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  isAuthenticated = () => true;
 
   // isAuthenticated(){
   //   const credentials = sessionStorage.getItem("credentials");
@@ -75,6 +76,7 @@ class ApplicationViews extends Component {
   render() {
     return (
       <div className="container-div">
+        <Route exact path="/callback" component={Callback} />
         <Route path="/login" component={Login} />
         <Route
           exact
@@ -134,7 +136,12 @@ class ApplicationViews extends Component {
         <Route
           path="/employees"
           render={props => {
-            return <EmployeeList employees={this.state.employees} animals={this.state.animals} />;
+            return (
+              <EmployeeList
+                employees={this.state.employees}
+                animals={this.state.animals}
+              />
+            );
           }}
         />
         <Route
