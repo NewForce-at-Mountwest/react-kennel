@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dog from "./DogIcon.png";
+import PropTypes from "prop-types";
 
-export default class AnimalCard extends Component {
+class AnimalCard extends Component {
   render() {
     return (
       <div className="card">
@@ -19,3 +20,8 @@ export default class AnimalCard extends Component {
     );
   }
 }
+AnimalCard.propTypes = {
+  animal: PropTypes.object.isRequired
+}
+
+export default AnimalCard;

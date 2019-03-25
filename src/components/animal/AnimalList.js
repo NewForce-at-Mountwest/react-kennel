@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import "./Animal.css";
 
 import AnimalCard from "./AnimalCard";
+import PropTypes from "prop-types";
 
-export default class AnimalList extends Component {
+class AnimalList extends Component {
   render() {
     return (
       <React.Fragment>
@@ -28,3 +29,9 @@ export default class AnimalList extends Component {
     );
   }
 }
+
+AnimalList.propTypes = {
+  animals: PropTypes.array.isRequired
+}
+
+export default AnimalList;
