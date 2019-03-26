@@ -12,7 +12,7 @@ import EmployeeAPIManager from "../modules/EmployeeManager";
 import OwnerAPIManager from "../modules/OwnerManager";
 import LocationAPIManager from "../modules/LocationManager";
 import Login from "./authentication/Login";
-import Callback from "./Callback";
+import Callback from "./authentication/Callback";
 
 class ApplicationViews extends Component {
   state = {
